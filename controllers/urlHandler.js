@@ -1,6 +1,5 @@
 const dns = require("dns");
 const URL = require("../models/URL");
-const Counter = require("../models/Counter");
 
 // Search for '://', store protocol and hostname+path
 const protocolRegExp = /^https?:\/\/(.*)/i;
