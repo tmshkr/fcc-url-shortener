@@ -25,13 +25,15 @@ db.once('open', function() {
 });
 
 app.use(cors());
-app.use(bodyParser.urlencoded({'extended': false}));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 
-app.use('/public', express.static(process.cwd() + '/public'));
+// app.use('/public', express.static(process.cwd() + '/public'));
+app.use(express.static('public'));
 
 app.get('/', function(req, res){
-  res.sendFile(process.cwd() + '/views/index.html');
+  res.sendFile(process.cwd() + '/public/index.html');
 });
 
   
@@ -39,7 +41,7 @@ app.get('/', function(req, res){
 app.post("/api/shorturl/new", urlHandler.addURL);
 
 // GET saved URL from short URL
-app.get('/api/shorturl/:shurl', urlHandler.getURL);
+app.get('/:shurl', urlHandler.getURL);
 
 
 // 404 not found to all other routes

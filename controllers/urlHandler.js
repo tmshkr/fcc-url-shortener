@@ -14,10 +14,17 @@ exports.addURL = (req, res) => {
 	if (url.match(/\/$/i)) url = url.slice(0, -1);
 
 	const protocolMatch = url.match(protocolRegExp);
+  let hostAndQuery;
 
-	if (!protocolMatch) return res.json({ error: "invalid URL" });
+	if (!protocolMatch) {
+    hostAndQuery = url;
+    url = "https://" + url;
+  }
+  else {
+    hostAndQuery = protocolMatch[1];
+  }
 
-	const hostAndQuery = protocolMatch[1];
+	// const hostAndQuery = protocolMatch[1];
 	const hostnameMatch = hostAndQuery.match(hostnameRegExp);
 
 	if (hostnameMatch) {
@@ -33,7 +40,7 @@ exports.addURL = (req, res) => {
 						// URL is already in the DB, return the matched one
 						res.json({
               original_url: savedURL.url,
-              short_url: savedURL.index
+              shurl_id: savedURL.index
             });
 					} else {
             // create new URL entry
@@ -43,7 +50,7 @@ exports.addURL = (req, res) => {
 							if (err) return;
 							res.json({
 								original_url: savedURL.url,
-								short_url: savedURL.index
+								shurl_id: savedURL.index
 							});
 						});
 					}
