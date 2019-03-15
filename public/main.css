@@ -1,0 +1,43 @@
+body, html {
+  margin: 0;
+  background: #111;
+  text-align: center;
+  font-family: sans-serif;
+  color: #fff;
+}
+
+#main {
+  margin-top: 15vh;
+}
+
+#main a {
+  color: #0ff;
+}
+
+#main input {
+  display: block;
+  width: 15em;
+  padding: 0.25em;
+  text-align: center;
+  margin: 1em auto;
+  font-size: 1.2em;
+}
+
+#main button {
+  display: block;
+  margin: 1em auto;
+  padding: 0.25em;
+  font-size: 1.2em;
+}
+
+#main h2 {
+  height: 2em;
+}
+
+#tooltip {
+  position: absolute;
+  padding: 0.25em;
+  background: #0D47A1;
+  opacity: 1;
+  transition: opacity 1s ease-out;
+}
